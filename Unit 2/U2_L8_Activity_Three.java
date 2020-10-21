@@ -11,5 +11,7 @@ public class U2_L8_Activity_Three {
 
     int diff = Math.abs(a) + Math.abs(b);
     System.out.println("Difference: " + diff);
+
+    scan.close();
   }
 }

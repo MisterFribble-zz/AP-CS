@@ -13,5 +13,7 @@ public class U2_L8_Activity_Two {
 
     double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
     System.out.println("Distance between points: " + c);
+
+    scan.close();
   }
 }
