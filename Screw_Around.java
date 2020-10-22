@@ -1,11 +1,18 @@
 /**
  * Screw_Around
  */
-import edhesive.shapes.*;
+import java.util.Scanner;
 
 public class Screw_Around {
     public static void main(String[] args) {
-        Circle c = new Circle();
-        System.out.println(c);
+        // Instantiate and initialize new Scanner scan
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Please enter a test grade:");
+        int grade = scan.nextInt();
+
+        if (grade >= 60) {
+            System.out.println("You passed!");
+        }
     }
 }
