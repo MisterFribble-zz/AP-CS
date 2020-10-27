@@ -1,1 +1,1 @@
-This is the repository I am using for my Edhesive AP Computer Science class for codespaces.
+This is the branch I am using exclusively for an IDE. WARNING: DO NOT COMMIT TO THIS BRANCH
