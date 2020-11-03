@@ -37,5 +37,7 @@ public class U3_L4_Activity_Three {
     if (isValid) {
       System.out.println("IP Address: " + oct1 + "." + oct2 + "." + oct3 + "." + oct4);
     }
+
+    scan.close();
   }
 }

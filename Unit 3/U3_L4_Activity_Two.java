@@ -13,5 +13,6 @@ public class U3_L4_Activity_Two {
     } else {
       System.out.println("One or both are negative.");
     }
+    scan.close();
   }
 }

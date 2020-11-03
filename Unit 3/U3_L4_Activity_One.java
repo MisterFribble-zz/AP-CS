@@ -11,5 +11,7 @@ public class U3_L4_Activity_One {
     } else {
       System.out.println("False");
     }
+
+    scan.close();
   }
 }
