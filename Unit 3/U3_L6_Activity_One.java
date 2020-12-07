@@ -15,5 +15,7 @@ public class U3_L6_Activity_One{
     }
     System.out.println("Your number is " + num);
 
+    scan.close();
+
   }
 }
