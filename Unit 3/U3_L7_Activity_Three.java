@@ -21,5 +21,7 @@ public class U3_L7_Activity_Three {
     } else {
       System.out.println("Different Rectangles");
     }
+
+    scan.close();
   }
 }

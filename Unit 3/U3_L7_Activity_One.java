@@ -13,5 +13,7 @@ public class U3_L7_Activity_One {
     } else {
       System.out.println("Access denied!");
     }
+
+    scan.close();
   }
 }

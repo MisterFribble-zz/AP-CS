@@ -18,5 +18,6 @@ public class U3_L7_Activity_Two {
     } else {
       System.out.println("Try again");
     }
+    scan.close();
   }
 }

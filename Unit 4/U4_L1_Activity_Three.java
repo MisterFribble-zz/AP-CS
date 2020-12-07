@@ -12,5 +12,7 @@ public class U4_L1_Activity_Three {
       System.out.print(word.substring(i, i + 1));
       i += 2;
     }
+
+    scan.close();
   }
 }
