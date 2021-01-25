@@ -1,21 +1,29 @@
 public class Book {
-  
+
   // The fields of our class
   private String title;
   private String author;
   private int year;
 
-  // Constructor
-  public Book(String a, String t, int y) {
-    author = a;
-    title = t;
-    if (y >= 1450) {
-      year = y;
-    } else {
-      year = 1900;
-    }
+  // Constructors
+  public Book(String t, String a, int y) {
+    setTitle(t);
+    setAuthor(a);
+    setYear(y);
   }
-  
+
+  public Book() {
+    this("None", "Unknown", 1900);
+  }
+
+  public Book(String t) {
+    this(t, "Unknown", 1900);
+  }
+
+  public Book(int y) {
+    this("None", "Unknown", y);
+  }
+
   // Accessors
   public String getAuthor() {
     return author;
@@ -53,9 +61,7 @@ public class Book {
 
   // equals() method
   public boolean equals(Book other) {
-    if (title.equals(other.getTitle()) &&
-        author.equals(other.getAuthor()) &&
-        year == other.getYear()) {
+    if (title.equals(other.getTitle()) && author.equals(other.getAuthor()) && year == other.getYear()) {
       return true;
     }
     return false;
