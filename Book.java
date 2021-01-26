@@ -4,12 +4,16 @@ public class Book {
   private String title;
   private String author;
   private int year;
-
+  private static int num;
+  private int bookID;
+  
   // Constructors
   public Book(String t, String a, int y) {
     setTitle(t);
     setAuthor(a);
     setYear(y);
+    num++;
+    bookID = num;
   }
 
   public Book() {
@@ -56,7 +60,7 @@ public class Book {
 
   // toString() method
   public String toString() {
-    return title + "\n\t" + author + "\n\t" + year;
+    return title + "\n\t" + author + "\n\t" + year + "\n\tBookID: " + bookID;
   }
 
   // equals() method
@@ -65,5 +69,9 @@ public class Book {
       return true;
     }
     return false;
+  }
+
+  public static int getNextID() {
+    return num + 1;
   }
 }
