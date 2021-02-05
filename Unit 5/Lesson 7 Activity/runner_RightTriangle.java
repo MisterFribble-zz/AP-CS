@@ -57,5 +57,6 @@ public class runner_RightTriangle{
         System.out.println("Not recognized.");
       }
     }
+    scan.close();
   }
 }
