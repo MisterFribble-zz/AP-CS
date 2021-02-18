@@ -12,5 +12,6 @@ public class runner_U6_L3_Activity_One {
       wordList[i] = scan.nextLine();
     }
     System.out.println("Longest word: " + U6_L3_Activity_One.findLongest(wordList));
+    scan.close();
   }
 }

@@ -11,5 +11,6 @@ public class runner_U6_L3_Activity_Two{
       wordList[i] = scan.nextLine();
     }
     U6_L3_Activity_Two.reverse(wordList);
+    scan.close();
   }
 }

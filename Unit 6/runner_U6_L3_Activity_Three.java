@@ -12,5 +12,6 @@ public class runner_U6_L3_Activity_Three{
     }
     System.out.println();
     U6_L3_Activity_Three.printIngs(wordList);
+    scan.close();
   }
 }
