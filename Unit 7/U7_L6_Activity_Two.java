@@ -5,11 +5,13 @@ public class U7_L6_Activity_Two {
     int count = 0;
     for (int i = 1; i < list.size(); i++) {
       int temp = list.get(i);
-      int j = i - 1;
-      while(j >= 0 && list.get(j).compareTo(temp) == 1) {
+      for(int j = i - 1; j >= 0; j--) {
         count++;
-        list.set(j + 1, list.get(j));
-        j--;
+        if (list.get(j).compareTo(temp) == 1) {
+          list.set(j + 1, list.get(j));
+        } else {
+          break;
+        }
       }
       list.set(j + 1, temp);
     }
