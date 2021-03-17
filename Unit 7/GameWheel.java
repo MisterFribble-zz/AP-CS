@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameWheel {
   private ArrayList<Slice> slices; // List of slices making up the wheel
@@ -10,7 +11,11 @@ public class GameWheel {
    */
   public String toString() {
     // Implement the toString method here
-    return "";
+    String str = "";
+    for (int i = 0; i < slices.size(); i++) {
+      str += "\n" + i + " - " + slices.get(i).toString();
+    }
+    return str;
   }
 
   /*
@@ -19,6 +24,26 @@ public class GameWheel {
    */
   public void scramble() {
     // Implement the scramble method here
+    Random rand = new Random();
+    int random = rand.nextInt(20);
+    for (int i = 0; i < 20; i++) {
+      if (slices.get(i).getColor() == "black") {
+        while (random % 5 != 0) {
+          random = rand.nextInt(20);
+        }
+      } else if (slices.get(i).getColor() == "red") {
+        while (random % 5 == 0 || random % 2 == 0) {
+          random = rand.nextInt(20);
+        }
+      } else {
+        while (random % 2 != 0 || random % 5 == 0) {
+          random = rand.nextInt(20);
+        }
+      }
+      Slice temp = slices.get(i);
+      slices.set(i, slices.get(random));
+      slices.set(random, temp);
+    }
   }
 
   /*
@@ -27,6 +52,29 @@ public class GameWheel {
    */
   public void sort() {
     // Implement the sort method here
+    for (int i = 0; i < 3; i++) {
+      boolean black = false;
+      int interval = 2;
+      int start = 0;
+
+      if (slices.get(i).getColor() == "black") {
+        black = true;
+        interval = 5;
+      } else if (slices.get(i).getColor() == "red") {
+        start = 1;
+      }
+
+      for (int j = start; j < slices.size() - 1; j += interval) {
+        int minIndex = i;
+        if (black || i % 5 != 0) {
+          for (int k = i + 1; k < slices.size(); k += interval) {
+            if (slices.get(j).getPrizeAmount() < slices.get(minIndex).getPrizeAmount()) {
+              minIndex = j;
+            }
+          }
+        }
+      }
+    }
   }
 
   /* COMPLETED METHODS - YOU DO NOT NEED TO CHANGE THESE */
