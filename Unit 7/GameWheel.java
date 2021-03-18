@@ -1,9 +1,13 @@
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Collections;
+import java.util.Iterator;
 
 public class GameWheel {
   private ArrayList<Slice> slices; // List of slices making up the wheel
   private int currentPos; // Position of currently selected slice on wheel
+  ArrayList<Slice> blacks = new ArrayList<>();
+  ArrayList<Slice> reds = new ArrayList<>();
+  ArrayList<Slice> blues = new ArrayList<>();
 
   /*
    * Returns string representation of GameWheel with each numbered slice on a new
@@ -13,7 +17,7 @@ public class GameWheel {
     // Implement the toString method here
     String str = "";
     for (int i = 0; i < slices.size(); i++) {
-      str += "\n" + i + " - " + slices.get(i).toString();
+      str += "\n" + i + " - " + slices.get(i);
     }
     return str;
   }
@@ -24,26 +28,11 @@ public class GameWheel {
    */
   public void scramble() {
     // Implement the scramble method here
-    Random rand = new Random();
-    int random = rand.nextInt(20);
-    for (int i = 0; i < 20; i++) {
-      if (slices.get(i).getColor() == "black") {
-        while (random % 5 != 0) {
-          random = rand.nextInt(20);
-        }
-      } else if (slices.get(i).getColor() == "red") {
-        while (random % 5 == 0 || random % 2 == 0) {
-          random = rand.nextInt(20);
-        }
-      } else {
-        while (random % 2 != 0 || random % 5 == 0) {
-          random = rand.nextInt(20);
-        }
-      }
-      Slice temp = slices.get(i);
-      slices.set(i, slices.get(random));
-      slices.set(random, temp);
-    }
+    splitList();
+    Collections.shuffle(blacks);
+    Collections.shuffle(reds);
+    Collections.shuffle(blues);
+    combineLists();
   }
 
   /*
@@ -52,29 +41,11 @@ public class GameWheel {
    */
   public void sort() {
     // Implement the sort method here
-    for (int i = 0; i < 3; i++) {
-      boolean black = false;
-      int interval = 2;
-      int start = 0;
-
-      if (slices.get(i).getColor() == "black") {
-        black = true;
-        interval = 5;
-      } else if (slices.get(i).getColor() == "red") {
-        start = 1;
-      }
-
-      for (int j = start; j < slices.size() - 1; j += interval) {
-        int minIndex = i;
-        if (black || i % 5 != 0) {
-          for (int k = i + 1; k < slices.size(); k += interval) {
-            if (slices.get(j).getPrizeAmount() < slices.get(minIndex).getPrizeAmount()) {
-              minIndex = j;
-            }
-          }
-        }
-      }
-    }
+    splitList();
+    sortList(blacks);
+    sortList(reds);
+    sortList(blues);
+    combineLists();
   }
 
   /* COMPLETED METHODS - YOU DO NOT NEED TO CHANGE THESE */
@@ -137,5 +108,49 @@ public class GameWheel {
         arr[i] = i * 200;
     }
     return arr;
+  }
+
+  // Helpful Methods
+  private void splitList() {
+    for (int i = slices.size() - 1; i >= 0; i--) {
+      if (slices.get(i).getColor().equals("black")) {
+        blacks.add(slices.remove(i));
+      } else if (slices.get(i).getColor().equals("red")) {
+        reds.add(slices.remove(i));
+      } else {
+        blues.add(slices.remove(i));
+      }
+    }
+  }
+
+  private void combineLists() {
+    Iterator<Slice>blackIterator = blacks.iterator();
+    Iterator<Slice>redIterator = reds.iterator();
+    Iterator<Slice>blueIterator = blues.iterator();
+
+    for (int i = 0; i < 20; i++) {
+      if (i % 5 == 0) {
+        slices.add(blackIterator.next());
+      } else if (i % 2 == 1) {
+        slices.add(redIterator.next());
+      } else {
+        slices.add(blueIterator.next());
+      }
+    }
+    blacks.clear();
+    reds.clear();
+    blues.clear();
+  }
+
+  private void sortList(ArrayList<Slice> list) {
+    for (int i = 0; i < list.size() - 1; i++) {
+      int minIndex = i;
+      for (int j = i + 1; j < list.size(); j++) {
+        if (list.get(j).getPrizeAmount() < list.get(minIndex).getPrizeAmount()) {
+          minIndex = j;
+        }
+      }
+      Collections.swap(list, i, minIndex);
+    }
   }
 }
