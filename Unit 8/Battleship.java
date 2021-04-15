@@ -84,5 +84,6 @@ public class Battleship
         System.out.println("\n" + b + "\n");
     }
     System.out.println("Game over!");
+    scan.close();
   }
 }

@@ -30,5 +30,6 @@ public class runner_TemperatureMonth{
       System.out.print(wkAvgs[i] + ", ");
     }
     System.out.println(wkAvgs[wkAvgs.length - 1] + "}");
+    scan.close();
   }
 }
