@@ -3,7 +3,7 @@ import java.util.ArrayList;
 class Main {
   public static void main(String[] args) {
     //Uncomment to test the Account Class
-    /*Account one = new Account("Rachel", "Smith", 5000.00);
+    Account one = new Account("Rachel", "Smith", 5000.00);
     System.out.println(one.getBalance());
     System.out.println(one);
 
@@ -23,7 +23,7 @@ class Main {
     //Uncomment to test the Savings Class
     Savings four = new Savings("Smith", "Rachel", 5000, 0.04);
     System.out.println(four.getInterestEarned());
-    System.out.println(four);*/
+    System.out.println(four);
 
 
     //Uncomment to Test the Bank Class

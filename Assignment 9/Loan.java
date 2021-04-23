@@ -16,11 +16,11 @@ public class Loan extends Account {
   public double getPayment() {
     double r = interestRate / 12;
     int n = yearsToPay * 12;
-    return (r * super.getBalance()) / (1 - Math.pow(1 + r, -n));
+    return (r * balance) / (1 - Math.pow(1 + r, -n));
   }
 
   // toString method
   public String toString() {
-    return super.toString() + "\n\t" + yearsToPay + " year " + loanType + " loan\n\tMonthly Payment: $" + getPayment();
+    return super.toString() + "\n\t" + yearsToPay + " year " + loanType + " loan\n\tMonthly Payment: $" + moneyRound(getPayment());
   }
 }

@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Account {
   // Fields
   private String firstName;
@@ -22,6 +24,12 @@ public class Account {
 
   // toString method
   public String toString() {
-    return lastName + ", " + firstName + "\n\tAccount Number: " + accountNumber + "\n\tBalance: $" + balance;
+    return lastName + ", " + firstName + "\n\tAccount Number: " + accountNumber + "\n\tBalance: $" +  moneyRound(balance);
+  }
+
+  // rounding method
+  protected String moneyRound(double d) {
+    DecimalFormat format = new DecimalFormat("#.00");
+    return format.format(d);
   }
 }

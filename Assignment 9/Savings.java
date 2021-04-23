@@ -16,6 +16,6 @@ public class Savings extends Checking {
 
   // toString method
   public String toString() {
-    return super.toString() + "\n\tInterest Earned: $" + getInterestEarned();
+    return super.toString() + "\n\tInterest Earned: $" + moneyRound(getInterestEarned());
   }
 }
